@@ -1,264 +1,108 @@
-Intent Portal
+# intent-portal
 
-Минималистичный портал для тестирования Android Intent-ссылок, Deep Links и поведения браузеров/WebView.
+## Description
 
----
+Minimal Android Intent Portal for JekyllEx and GitHub Pages
 
-Что такое Intent Portal?
+Минимальный Android Intent Portal для тестирования intent://, android-app:// и deep links.
 
-Intent Portal — это лёгкий web-проект для тестирования:
+## Repository Name
 
-- Android Intent Links
-- Deep Links
-- "intent://"
-- "android-app://"
-- пользовательских URI-схем
-- запуска приложений через браузер
-- поведения Android WebView
-- совместимости браузеров Android
+```text
+intent-portal
+```
 
-Проект специально сделан максимально простым:
+## GitHub Repository Description
 
-- чистый HTML
-- минимальный CSS
-- Jekyll
-- GitHub Pages
-
-Без:
-
-- React
-- npm
-- сборщиков
-- JavaScript-фреймворков
-- сложной инфраструктуры
-
-Только простые и надёжные ссылки для реального тестирования Android.
+```text
+Minimal Android Intent Portal for JekyllEx and GitHub Pages
+```
 
 ---
 
-Для чего нужен этот проект?
+# Установка
 
-Современный Android ведёт себя по-разному в зависимости от:
-
-- браузера
-- WebView
-- оболочки производителя
-- версии Android
-- системных ограничений
-
-Одна и та же ссылка может:
-
-- работать в Chrome
-- не работать в Firefox
-- блокироваться Telegram Browser
-- иначе открываться в WebView
-
-Intent Portal позволяет быстро проверять всё это на практике.
-
----
-
-Что можно тестировать?
-
-Intent-ссылки
-
-Пример:
-
-intent:#Intent;action=android.settings.SETTINGS;end
-
----
-
-android-app ссылки
-
-Пример:
-
-android-app://com.android.settings
-
----
-
-Deep Links приложений
-
-Примеры:
-
-tg://resolve?domain=telegram
-
-vnd.youtube://
-
-spotify://
-
----
-
-Возможности проекта
-
-- тестирование Android Intent Links
-- проверка Deep Links
-- запуск приложений через браузер
-- исследование ограничений Android
-- тестирование WebView
-- создание Android dashboard-порталов
-- основа для WebView APK
-- оффлайн Android-панели
-
----
-
-Почему Jekyll?
-
-Jekyll идеально подходит для подобных проектов:
-
-- работает быстро
-- не требует базы данных
-- отлично дружит с GitHub Pages
-- легко редактируется даже с телефона
-- можно запускать полностью локально
-
----
-
-Технологии
-
-- Jekyll
-- GitHub Pages
-- HTML5
-- CSS3
-
----
-
-Структура проекта
-
-intent-portal/
-├── _config.yml
-├── index.md
-├── README.md
-├── LICENSE
-├── .gitignore
-└── assets/
-    └── style.css
-
----
-
-Установка
-
-1. Установить JekyllEx
-
-Официальный сайт:
+## 1. Установить JekyllEx
 
 https://jekyllex.xyz
 
-Или через F-Droid:
-
+или через F-Droid:
 https://f-droid.org/packages/xyz.jekyllex/
 
 ---
 
-2. Создать проект
-
-Внутри JekyllEx:
+## 2. Создать проект
 
 - New Project
 - Blank Project
-- Название проекта:
-  "intent-portal"
+- Название:
+  intent-portal
 
 ---
 
-3. Скопировать файлы проекта
+## 3. Скопировать файлы
 
-Заменить файлы проекта содержимым репозитория.
+Вставить содержимое архива в проект.
 
 ---
 
-4. Запустить локальный сервер
+## 4. Запустить сервер
 
 Через кнопку:
 
+```text
 ▶ Serve
+```
 
-или через терминал:
+или Terminal:
 
+```bash
 bundle exec jekyll serve
+```
 
 ---
 
-5. Открыть локальный адрес
+## 5. Открыть сайт
 
+```text
 http://127.0.0.1:4000
+```
 
 ---
 
-Публикация через GitHub Pages
+## 6. GitHub Pages
 
-GitHub:
+GitHub → Settings → Pages
 
-Settings → Pages
+Deploy from branch:
+- main
+- /(root)
 
-Настройки:
+---
 
-- Branch: "main"
-- Folder: "/ (root)"
+## 7. Сайт
 
-После публикации сайт будет доступен по адресу:
-
+```text
 https://USERNAME.github.io/intent-portal/
+```
 
 ---
 
-Совместимость браузеров
+# Структура проекта
 
-Браузер| Совместимость
-Chrome Android| Отличная
-Android WebView| Отличная
-Firefox Android| Частичная
-Telegram Browser| Ограниченная
-OEM браузеры| Зависит от прошивки
-
----
-
-Важные замечания
-
-Некоторые версии Android могут ограничивать:
-
-- запуск системных Intent
-- открытие приложений
-- переходы между приложениями
-- работу внешних URI-схем
-
-Особенно:
-
-- Android 12+
-- Android 13+
-- Android 14+
-
-Поведение может отличаться в зависимости от устройства и браузера.
+```text
+intent-portal/
+├── _config.yml
+├── .gitignore
+├── LICENSE
+├── README.md
+├── index.md
+└── assets/
+    └── style.css
+```
 
 ---
 
-Идеи для развития
+# License
 
-- PWA-режим
-- WebView APK
-- Android Dashboard
-- Intent Compatibility Matrix
-- логирование результатов
-- оффлайн-портал
-- Android launcher interface
-- системная web-панель
-
----
-
-Философия проекта
-
-Web — это не только сайты.
-
-На Android web может стать:
-
-- интерфейсом
-- панелью управления
-- launcher-системой
-- связующим слоем между приложениями
-- оболочкой поверх Android
-
-Intent Portal исследует именно эту идею.
-
----
-
-Лицензия
-
-MIT License
+MIT
