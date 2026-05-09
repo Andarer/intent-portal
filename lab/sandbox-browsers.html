@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Sandbox Browsers — Intent Portal</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+
+<h1>🧪 Sandbox Browsers</h1>
+
+<p>
+Sandbox-браузеры — это изолированные среды исполнения веб-контента,  
+в которых каждая вкладка, процесс или страница работает в ограниченной "песочнице".
+</p>
+
+<hr>
+
+<h2>🧠 Что такое Sandbox в браузерах</h2>
+
+<p>
+Sandbox (песочница) — это механизм безопасности, который ограничивает доступ веб-страницы к системе устройства.
+</p>
+
+<ul>
+  <li>🔒 изоляция процессов</li>
+  <li>🚫 запрет прямого доступа к ОС</li>
+  <li>🧩 ограничение файловой системы</li>
+  <li>⚙️ контроль выполнения скриптов</li>
+</ul>
+
+<p>
+Цель Sandbox — предотвратить выполнение вредоносного кода и утечку данных.
+</p>
+
+<hr>
+
+<h2>🌐 Основные Sandbox-браузеры</h2>
+
+<h3>🔵 Google Chrome</h3>
+<p>
+Один из самых строгих Sandbox-движков.
+Каждая вкладка работает как отдельный процесс.
+</p>
+
+<p>
+👉 Intent поведение:
+</p>
+<ul>
+  <li><code>https://</code> → открытие в sandbox renderer</li>
+  <li><code>intent://</code> → передача в OS handler или блокировка</li>
+  <li><code>tg://</code> → внешний переход (если разрешено)</li>
+</ul>
+
+<hr>
+
+<h3>🟠 Microsoft Edge</h3>
+<p>
+Использует Chromium sandbox модель (аналог Chrome).
+</p>
+
+<p>
+👉 Особенность:
+</p>
+<ul>
+  <li>усиленная интеграция с Windows security layer</li>
+  <li>ограничение deep link execution</li>
+</ul>
+
+<hr>
+
+<h3>🟣 Firefox</h3>
+<p>
+Использует собственную multi-process sandbox архитектуру (Gecko).
+</p>
+
+<p>
+👉 Поведение:
+</p>
+<ul>
+  <li>меньше предсказуемости intent:// схем</li>
+  <li>часто блокирует нестандартные протоколы</li>
+</ul>
+
+<hr>
+
+<h2>🧬 Intent поведение в Sandbox средах</h2>
+
+<table border="1" cellpadding="6">
+  <tr>
+    <th>Схема</th>
+    <th>Chrome</th>
+    <th>Edge</th>
+    <th>Firefox</th>
+  </tr>
+
+  <tr>
+    <td>https://</td>
+    <td>render</td>
+    <td>render</td>
+    <td>render</td>
+  </tr>
+
+  <tr>
+    <td>intent://</td>
+    <td>redirect / block</td>
+    <td>OS handling</td>
+    <td>blocked</td>
+  </tr>
+
+  <tr>
+    <td>tg://</td>
+    <td>external app</td>
+    <td>external app</td>
+    <td>fallback / block</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>🧪 Sandbox как Execution Layer</h2>
+
+<p>
+Sandbox браузеры — это не просто UI.  
+Это <b>execution isolation layer</b>.
+</p>
+
+<p>
+Они определяют:
+</p>
+
+<ul>
+  <li>как исполняются ссылки</li>
+  <li>может ли OS быть вызвана</li>
+  <li>разрешены ли intent-схемы</li>
+</ul>
+
+<hr>
+
+<h2>⚙️ Intent Portal интерпретация</h2>
+
+<p>
+В рамках Intent Portal Sandbox браузеры рассматриваются как:
+</p>
+
+<blockquote>
+🧠 ограниченные execution среды без прямого доступа к OS intent layer
+</blockquote>
+
+<p>
+Это означает:
+</p>
+
+<ul>
+  <li>нет полного контроля над intent://</li>
+  <li>поведение зависит от policy sandbox</li>
+  <li>execution всегда опосредованный</li>
+</ul>
+
+<hr>
+
+<h2>🚀 Связанные модули</h2>
+
+<ul>
+  <li><a href="/matrix/index.html">📊 Intent Matrix</a></li>
+  <li><a href="/lab/intent-lab.html">🧪 Intent Lab</a></li>
+  <li><a href="/matrix/webview.html">📱 WebView Layer</a></li>
+</ul>
+
+<hr>
+
+<h2>🧭 Вывод</h2>
+
+<p>
+Sandbox браузеры — это фундаментальный слой ограничения исполнения ссылок.  
+Они формируют разницу между "открыть страницу" и "выполнить intent".
+</p>
+
+</body>
+</html>
