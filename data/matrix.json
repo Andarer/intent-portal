@@ -1,1 +1,211 @@
+{
+  "meta": {
+    "name": "Intent Portal Matrix",
+    "version": "1.0.0-engine-core",
+    "type": "execution-model",
+    "description": "Core dataset for intent behavior simulation across platforms"
+  },
 
+  "platforms": {
+    "chrome": {
+      "id": "chrome",
+      "type": "browser",
+      "execution_layer": "desktop/mobile browser",
+      "intent_support": true,
+
+      "schemes": [
+        "http",
+        "https",
+        "intent",
+        "mailto",
+        "tel"
+      ],
+
+      "behavior": {
+        "intent://": {
+          "action": "redirect_or_block",
+          "result": "varies_by_os",
+          "notes": "Chrome may pass intent to OS or block depending on context"
+        },
+
+        "https://": {
+          "action": "open",
+          "result": "render_webpage"
+        },
+
+        "tg://": {
+          "action": "external_app",
+          "result": "open_telegram_app_or_fallback"
+        }
+      },
+
+      "limitations": [
+        "restricted_intent_handling_on_desktop",
+        "security_sandboxing"
+      ]
+    },
+
+    "webview": {
+      "id": "webview",
+      "type": "android_webview",
+      "execution_layer": "native app container",
+
+      "intent_support": true,
+
+      "schemes": [
+        "http",
+        "https",
+        "intent",
+        "custom_scheme"
+      ],
+
+      "behavior": {
+        "intent://": {
+          "action": "intercept_possible",
+          "result": "can_be_captured_by_app",
+          "notes": "Depends on WebView client implementation"
+        },
+
+        "https://": {
+          "action": "render",
+          "result": "in_app_view"
+        },
+
+        "tg://": {
+          "action": "external_app",
+          "result": "delegate_to_android_intent_system"
+        }
+      },
+
+      "capabilities": [
+        "javascript_bridge_possible",
+        "intent_interception",
+        "debug_logging"
+      ]
+    },
+
+    "telegram": {
+      "id": "telegram",
+      "type": "in_app_browser",
+      "execution_layer": "messenger_webview",
+
+      "intent_support": false,
+
+      "schemes": [
+        "https",
+        "tg://"
+      ],
+
+      "behavior": {
+        "https://": {
+          "action": "open_internal_browser",
+          "result": "telegram_in_app_view"
+        },
+
+        "tg://": {
+          "action": "native_handling",
+          "result": "telegram_app_navigation"
+        },
+
+        "intent://": {
+          "action": "blocked_or_ignored",
+          "result": "no_execution"
+        }
+      }
+    },
+
+    "firefox": {
+      "id": "firefox",
+      "type": "browser",
+      "execution_layer": "desktop/mobile browser",
+
+      "intent_support": false,
+
+      "schemes": [
+        "http",
+        "https",
+        "mailto",
+        "tel"
+      ],
+
+      "behavior": {
+        "https://": {
+          "action": "open",
+          "result": "render_webpage"
+        },
+
+        "intent://": {
+          "action": "blocked",
+          "result": "unsupported_scheme"
+        }
+      }
+    }
+  },
+
+  "intent_library": {
+    "examples": [
+      {
+        "id": "intent_001",
+        "scheme": "intent://open.app",
+        "expected_behavior": {
+          "chrome": "redirect_or_block",
+          "webview": "intercept_possible",
+          "telegram": "blocked",
+          "firefox": "unsupported"
+        }
+      },
+
+      {
+        "id": "intent_002",
+        "scheme": "tg://resolve?domain=test",
+        "expected_behavior": {
+          "chrome": "external_app_open",
+          "webview": "system_intent",
+          "telegram": "native_navigation",
+          "firefox": "external_app_open"
+        }
+      },
+
+      {
+        "id": "intent_003",
+        "scheme": "https://example.com",
+        "expected_behavior": {
+          "chrome": "render",
+          "webview": "render",
+          "telegram": "in_app_render",
+          "firefox": "render"
+        }
+      }
+    ]
+  },
+
+  "execution_rules": {
+    "priority_order": [
+      "native_app_handler",
+      "os_intent_handler",
+      "webview_interceptor",
+      "browser_engine"
+    ],
+
+    "decision_matrix": {
+      "intent://": "platform_dependent",
+      "https://": "universal_web",
+      "tg://": "telegram_native_or_os"
+    }
+  },
+
+  "generator_hooks": {
+    "html_targets": [
+      "matrix/chrome.html",
+      "matrix/webview.html",
+      "matrix/telegram.html",
+      "matrix/firefox.html"
+    ],
+
+    "render_rules": {
+      "platform_block_template": true,
+      "intent_table_view": true,
+      "behavior_diff_highlight": true
+    }
+  }
+}
