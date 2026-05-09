@@ -1,58 +1,104 @@
 ---
 layout: default
-title: Android Intent Portal
+title: Intent Portal — Meta System v2
 ---
 
-<link rel="stylesheet" href="/assets/style.css">
+# 🧠 INTENT-PORTAL
 
-# Android Intent Portal
+## Meta System for Intent & Link Behavior Analysis
 
-Минимальный тестовый портал для Android Intent Links, Deep Links и системных вызовов.
+Система анализа поведения ссылок и intent-схем в разных цифровых средах:
 
----
-
-## System Intents
-
-<a class="btn" href="intent:#Intent;action=android.settings.SETTINGS;end">
-⚙️ Android Settings
-</a>
-
-<a class="btn" href="intent:#Intent;action=android.settings.WIFI_SETTINGS;end">
-📶 Wi‑Fi Settings
-</a>
-
-<a class="btn" href="intent:#Intent;action=android.settings.BLUETOOTH_SETTINGS;end">
-🟦 Bluetooth Settings
-</a>
-
-<a class="btn" href="intent:#Intent;action=android.settings.APPLICATION_SETTINGS;end">
-📱 Applications
-</a>
+- 🌐 Браузеры (Chrome, Firefox)
+- 📱 Android WebView
+- 💬 Telegram in-app browser
+- 📲 Native Android intents
 
 ---
 
-## android-app Links
+## 🧬 СТРУКТУРА СИСТЕМЫ
 
-<a class="btn" href="android-app://com.android.settings">
-android-app:// Settings
-</a>
+### 🧪 Intent Lab
+Экспериментальная зона тестирования ссылок и intent-схем.
 
-<a class="btn" href="android-app://org.telegram.messenger">
-android-app:// Telegram
-</a>
+Что здесь происходит:
+- проверка `https://` ссылок
+- тестирование `intent://`
+- проверка deep links (`tg://`, `vnd.youtube://`)
+- анализ реакции разных сред
+
+👉 [Открыть Intent Lab](intent-lab.html)
 
 ---
 
-## Deep Links
+### 📊 Intent Matrix
+Центральная система сравнения поведения платформ.
 
-<a class="btn" href="tg://resolve?domain=telegram">
-Telegram Deep Link
-</a>
+Сравниваем:
 
-<a class="btn" href="vnd.youtube://">
-YouTube Deep Link
-</a>
+- Chrome
+- Firefox
+- Android WebView
+- Telegram
+- Android System
 
-<a class="btn" href="spotify://">
-Spotify Deep Link
-</a>
+👉 [Открыть Intent Matrix](matrix/index.html)
+
+---
+
+### 🗺️ Roadmap (архитектура системы)
+Живая карта развития Intent-Portal.
+
+- этапы разработки
+- эволюция системы
+- переход к Meta-архитектуре
+- планы Android APK + data engine
+
+👉 [Открыть Roadmap](roadmap.html)
+
+---
+
+## 📱 ANDROID INTENT LAYER
+
+Базовая поддержка системных интентов:
+
+### ⚙️ System Intents
+- Settings
+- Wi-Fi
+- Bluetooth
+- App Settings
+
+### 🔗 App Schemes
+- tg:// (Telegram)
+- vnd.youtube:// (YouTube)
+- intent:// (Android system)
+
+---
+
+## 🧬 META-ЭВОЛЮЦИЯ
+
+Текущий уровень системы:
+
+### v2.0 — Meta Expansion Layer
+
+Добавляется:
+- JSON data engine (matrix.json)
+- генерация страниц из данных
+- логирование поведения ссылок
+- WebView APK интеграция
+- расширяемая матрица сред
+
+---
+
+## 🚀 ЦЕЛЬ СИСТЕМЫ
+
+> Создать Meta Intent Operating Layer  
+> (систему анализа поведения ссылок в цифровых средах)
+
+---
+
+## 📡 СТАТУС
+
+- Версия: v2.0
+- Состояние: Active Development
+- Тип: Experimental Meta System
