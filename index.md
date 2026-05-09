@@ -18,6 +18,8 @@ title: Intent Portal — Meta System v2
 
 ## 🧬 СТРУКТУРА СИСТЕМЫ
 
+---
+
 ### 🧪 Intent Lab
 Экспериментальная зона тестирования ссылок и intent-схем.
 
@@ -27,7 +29,33 @@ title: Intent Portal — Meta System v2
 - проверка deep links (`tg://`, `vnd.youtube://`)
 - анализ реакции разных сред
 
-👉 [Открыть Intent Lab](intent-lab.html)
+👉 [Открыть Intent Lab](lab/intent-lab.html)
+
+---
+
+### 🧪 Sandbox Browsers (NEW)
+Модуль анализа sandbox-ограничений браузеров и execution isolation layer.
+
+Что здесь происходит:
+- поведение Chrome sandbox
+- ограничения Firefox execution
+- WebView sandbox model
+- различия между browser / OS слоями
+
+👉 [Открыть Sandbox Browsers](lab/sandbox-browsers.html)
+
+---
+
+### 🔥 Intent Links Sandbox (NEW)
+Хард-набор ссылок для стресс-тестирования execution среды.
+
+Проверяется:
+- intent:// схемы
+- system intents (tel:, mailto:, geo:)
+- edge-case URL payloads
+- sandbox break сценарии
+
+👉 [Открыть Intent Links Sandbox](lab/intent-links-sandbox.html)
 
 ---
 
@@ -46,7 +74,22 @@ title: Intent Portal — Meta System v2
 
 ---
 
+### 📱 WebView Layer
+Модель поведения ссылок внутри Android WebView среды.
+
+👉 [Открыть WebView Layer](matrix/webview.html)
+
+---
+
+### 🌐 Chrome Behavior
+Поведение Chrome как execution sandbox среды.
+
+👉 [Открыть Chrome Matrix](matrix/chrome.html)
+
+---
+
 ### 🗺️ Roadmap (архитектура системы)
+
 Живая карта развития Intent-Portal.
 
 - этапы разработки
@@ -54,7 +97,7 @@ title: Intent Portal — Meta System v2
 - переход к Meta-архитектуре
 - планы Android APK + data engine
 
-👉 [Открыть Roadmap](roadmap.html)
+👉 [Открыть Roadmap](roadmap.md)
 
 ---
 
@@ -79,14 +122,15 @@ title: Intent Portal — Meta System v2
 
 Текущий уровень системы:
 
-### v2.0 — Meta Expansion Layer
+### v2.1 → v2.2 Engine Transition
 
 Добавляется:
+
 - JSON data engine (matrix.json)
 - генерация страниц из данных
-- логирование поведения ссылок
-- WebView APK интеграция
-- расширяемая матрица сред
+- логика execution comparison
+- расширение sandbox layer
+- подготовка Android WebView execution model
 
 ---
 
@@ -99,6 +143,6 @@ title: Intent Portal — Meta System v2
 
 ## 📡 СТАТУС
 
-- Версия: v2.0
+- Версия: v2.2 (Engine Transition)
 - Состояние: Active Development
-- Тип: Experimental Meta System
+- Тип: Experimental Meta Execution System
