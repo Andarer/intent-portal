@@ -1,0 +1,25 @@
+body{
+  background:#111;
+  color:#eee;
+  font-family:sans-serif;
+  padding:20px;
+}
+
+h1,h2{
+  color:#00ff88;
+}
+
+a.btn{
+  display:block;
+  margin:12px 0;
+  padding:16px;
+  background:#222;
+  color:#00ff88;
+  text-decoration:none;
+  border-radius:12px;
+  border:1px solid #333;
+}
+
+a.btn:hover{
+  background:#333;
+}
