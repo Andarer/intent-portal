@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Intent Sandbox Links v3</title>
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+
+<body>
+
+<h1>🧪 Intent Sandbox — Execution Reference Lab v3</h1>
+
+<p>
+Каждая ссылка — это тест поведения среды (Chrome / WebView / Telegram / Android OS).
+Каждый элемент содержит описание ожидаемого execution эффекта.
+</p>
+
+<hr>
+
+<h2>🌐 1. WEB CORE EDGE CASES</h2>
+
+<ul>
+  <li><a href="https://example.com">https://example.com</a> — базовый HTTP render (нормальная загрузка страницы)</li>
+
+  <li><a href="https://example.com:443">https://example.com:443</a> — явный HTTPS порт, проверка стандартного TLS поведения</li>
+
+  <li><a href="http://example.com">http://example.com</a> — небезопасный протокол, возможный редирект на HTTPS</li>
+
+  <li><a href="https://127.0.0.1">https://127.0.0.1</a> — локальный loopback тест (sandbox restriction)</li>
+
+  <li><a href="https://localhost">https://localhost</a> — локальная среда исполнения (dev behavior)</li>
+
+  <li><a href="https://example.com/..//..//">https path traversal</a> — проверка нормализации URL</li>
+
+  <li><a href="https://example.com/%2e%2e/%2e%2e/">encoded traversal</a> — encoded path traversal test</li>
+
+  <li><a href="https://example.com#intent://test">fragment injection</a> — попытка внедрения intent в hash</li>
+
+  <li><a href="https://example.com?redirect=intent://open">intent in query</a> — проверка фильтрации параметров URL</li>
+
+  <li><a href="https://example.com?url=javascript:alert(1)">js injection probe</a> — попытка javascript scheme через query</li>
+</ul>
+
+<hr>
+
+<h2>📱 2. ANDROID INTENT:// LAYER</h2>
+
+<ul>
+  <li><a href="intent://scan/#Intent;scheme=zxing;package=com.google.zxing.client.android;end">QR scanner intent</a> — запуск внешнего QR приложения через intent</li>
+
+  <li><a href="intent://open/#Intent;scheme=https;action=android.intent.action.VIEW;end">VIEW intent open</a> — стандартный VIEW action через Android OS</li>
+
+  <li><a href="intent://test/#Intent;action=android.intent.action.VIEW;category=android.intent.category.BROWSABLE;end">BROWSABLE intent</a> — проверка browsable category execution</li>
+
+  <li><a href="intent://example.com/#Intent;scheme=https;end">deep link intent</a> — открытие HTTPS через intent handler</li>
+
+  <li><a href="intent://#Intent;action=android.intent.action.MAIN;end">empty MAIN intent</a> — базовый entry point без target</li>
+
+  <li><a href="intent://invalid/#Intent;scheme=unknown;end">invalid scheme intent</a> — тест неизвестной схемы</li>
+
+  <li><a href="intent://loop/#Intent;scheme=intent;end">recursive intent</a> — самоссылочный intent loop</li>
+
+  <li><a href="intent://crash/#Intent;package=non.existing.app;end">missing app intent</a> — отсутствующий пакет приложения</li>
+
+  <li><a href="intent://deep/link/test?x=1#Intent;scheme=https;end">query intent test</a> — deep parameter parsing</li>
+
+  <li><a href="intent://escape#Intent;scheme=https;S.browser_fallback_url=https://example.com;end">fallback intent</a> — fallback URL execution path</li>
+</ul>
+
+<hr>
+
+<h2>⚙️ 3. ANDROID SYSTEM SETTINGS INTENTS</h2>
+
+<ul>
+  <li><a href="intent:#Intent;action=android.settings.SETTINGS;end">General Settings</a> — открытие системных настроек Android</li>
+
+  <li><a href="intent:#Intent;action=android.settings.WIFI_SETTINGS;end">Wi-Fi Settings</a> — переход к настройкам Wi-Fi</li>
+
+  <li><a href="intent:#Intent;action=android.settings.BLUETOOTH_SETTINGS;end">Bluetooth Settings</a> — управление Bluetooth</li>
+
+  <li><a href="intent:#Intent;action=android.settings.APPLICATION_SETTINGS;end">App Settings</a> — список установленных приложений</li>
+
+  <li><a href="intent:#Intent;action=android.settings.DEVICE_INFO_SETTINGS;end">Device Info</a> — информация об устройстве</li>
+
+  <li><a href="intent:#Intent;action=android.settings.SECURITY_SETTINGS;end">Security Settings</a> — безопасность и блокировки</li>
+
+  <li><a href="intent:#Intent;action=android.settings.PRIVACY_SETTINGS;end">Privacy Settings</a> — приватность системы</li>
+
+  <li><a href="intent:#Intent;action=android.settings.DATA_USAGE_SETTINGS;end">Data Usage</a> — использование мобильных данных</li>
+
+  <li><a href="intent:#Intent;action=android.settings.LOCATION_SOURCE_SETTINGS;end">Location Settings</a> — GPS и геолокация</li>
+
+  <li><a href="intent:#Intent;action=android.settings.DEVELOPMENT_SETTINGS;end">Developer Options</a> — режим разработчика</li>
+</ul>
+
+<hr>
+
+<h2>💬 4. TELEGRAM SCHEMES</h2>
+
+<ul>
+  <li><a href="tg://resolve?domain=telegram">Telegram channel resolve</a> — открытие канала Telegram</li>
+
+  <li><a href="tg://resolve?domain=durov">Public user resolve</a> — попытка открыть профиль</li>
+
+  <li><a href="tg://join?invite=invalidcode">Join group invite</a> — вход в группу по инвайту</li>
+
+  <li><a href="tg://msg?text=hello">Message intent</a> — отправка текста</li>
+
+  <li><a href="tg://openmessage?user_id=123456">Open message thread</a> — диалог по user_id</li>
+
+  <li><a href="tg://user?id=1">User lookup</a> — поиск пользователя</li>
+
+  <li><a href="tg://resolve?domain=">Empty resolve</a> — некорректный домен</li>
+
+  <li><a href="tg://resolve?domain=@@@@@@">Invalid domain</a> — проверка фильтрации</li>
+
+  <li><a href="tg://settings">Telegram settings</a> — настройки приложения</li>
+
+  <li><a href="tg://proxy?server=127.0.0.1&port=80">Proxy config</a> — тест прокси слоя</li>
+</ul>
+
+<hr>
+
+<h2>📞 5. SYSTEM SCHEMES (OS LEVEL)</h2>
+
+<ul>
+  <li><a href="tel:+380501234567">Phone call</a> — вызов номера через dialer</li>
+
+  <li><a href="tel:000000000000">Invalid phone</a> — некорректный номер</li>
+
+  <li><a href="mailto:test@example.com">Email open</a> — запуск почтового клиента</li>
+
+  <li><a href="mailto:">Empty email</a> — пустой mail handler</li>
+
+  <li><a href="sms:+123456789">SMS send</a> — открытие SMS приложения</li>
+
+  <li><a href="sms:">Empty SMS</a> — некорректный SMS intent</li>
+
+  <li><a href="callto:+11111111">Callto scheme</a> — альтернативный звонок</li>
+
+  <li><a href="facetime://test">FaceTime</a> — Apple-only execution layer</li>
+
+  <li><a href="geo:0,0?q=Eiffel Tower">Geo query</a> — карта с поиском</li>
+
+  <li><a href="geo:999,999">Invalid geo</a> — некорректные координаты</li>
+</ul>
+
+<hr>
+
+<h2>🧬 6. SANDBOX BREAK TESTS</h2>
+
+<ul>
+  <li><a href="https://example.com/intent://fake">Nested intent</a> — попытка внедрения intent в URL</li>
+
+  <li><a href="https://intent://example.com">Intent as URL</a> — обратная инъекция схемы</li>
+
+  <li><a href="https://example.com/%00">Null byte injection</a> — тест парсинга URL</li>
+
+  <li><a href="https://example.com/<script>">Script injection</a> — HTML injection probe</li>
+
+  <li><a href="https://example.com/'onmouseover=alert(1)">Attribute injection</a> — XSS surface test</li>
+
+  <li><a href="data:text/html,<script>alert(1)</script>">Data URI execution</a> — inline HTML execution</li>
+
+  <li><a href="javascript:alert(1)">JS scheme</a> — JavaScript protocol test</li>
+
+  <li><a href="view-source:https://example.com">View source</a> — raw source access</li>
+
+  <li><a href="blob:https://example.com/123">Blob URL</a> — memory object URL</li>
+
+  <li><a href="file:///etc/passwd">File scheme</a> — локальная файловая система (blocked in most browsers)</li>
+</ul>
+
+<hr>
+
+<h2>🔥 7. WEBVIEW vs BROWSER TESTS</h2>
+
+<ul>
+  <li><a href="intent://open.app/#Intent;scheme=https;end">WebView intent test</a> — проверка interception слоя</li>
+
+  <li><a href="https://play.google.com/store/apps/details?id=com.demo">Play Store open</a> — внешний store redirect</li>
+
+  <li><a href="market://details?id=com.example">Market scheme</a> — Android market handler</li>
+
+  <li><a href="intent://market/#Intent;scheme=market;end">Market intent</a> — intent-based store open</li>
+
+  <li><a href="https://example.com/download.apk">APK download</a> — потенциально unsafe file link</li>
+
+  <li><a href="https://example.com?openApp=true">Open app flag</a> — query-based app trigger</li>
+
+  <li><a href="https://example.com?intent=1">Intent flag</a> — simulated intent trigger</li>
+
+  <li><a href="https://example.com#open-app">Hash trigger</a> — client-side navigation hint</li>
+
+  <li><a href="https://example.com?fallback=app">Fallback logic</a> — app/web fallback decision</li>
+
+  <li><a href="https://example.com/deeplink/test">Deep link</a> — standard routing test</li>
+</ul>
+
+<hr>
+
+<h2>🧠 SYSTEM NOTE</h2>
+
+<p>
+Каждая ссылка в этом документе — это точка наблюдения поведения execution layer.
+</p>
+
+<p>
+Цель: выявление различий между Chrome, WebView, Firefox, Telegram и Android OS intent handler.
+</p>
+
+</body>
+</html>
