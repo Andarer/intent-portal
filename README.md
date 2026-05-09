@@ -1,108 +1,123 @@
-# intent-portal
+# 🧠 INTENT-PORTAL
 
-## Description
+## Intent & Link Behavior Analysis System
 
-Minimal Android Intent Portal for JekyllEx and GitHub Pages
+Intent-Portal — экспериментальная система исследования поведения ссылок,
+intent-схем и deep links в различных цифровых средах.
 
-Минимальный Android Intent Portal для тестирования intent://, android-app:// и deep links.
+Проект исследует:
 
-## Repository Name
-
-```text
-intent-portal
-```
-
-## GitHub Repository Description
-
-```text
-Minimal Android Intent Portal for JekyllEx and GitHub Pages
-```
+- Android intents
+- deep links
+- browser behavior
+- Android WebView
+- Telegram in-app browser
+- execution environments
 
 ---
 
-# Установка
+# 🌐 NAVIGATION
 
-## 1. Установить JekyllEx
-
-https://jekyllex.xyz
-
-или через F-Droid:
-https://f-droid.org/packages/xyz.jekyllex/
+## 🚀 Main Index
+👉 [Open Index](index.md)
 
 ---
 
-## 2. Создать проект
-
-- New Project
-- Blank Project
-- Название:
-  intent-portal
+## 🗺️ Project Roadmap
+👉 [Open Roadmap](roadmap.md)
 
 ---
 
-## 3. Скопировать файлы
+# 🧪 CURRENT MODULES
 
-Вставить содержимое архива в проект.
+## Intent Lab
 
----
+Экспериментальная среда тестирования:
 
-## 4. Запустить сервер
-
-Через кнопку:
-
-```text
-▶ Serve
-```
-
-или Terminal:
-
-```bash
-bundle exec jekyll serve
-```
+- `intent://`
+- `tg://`
+- `vnd.youtube://`
+- Android settings intents
+- browser redirects
+- WebView behavior
 
 ---
 
-## 5. Открыть сайт
+## Intent Matrix
 
-```text
-http://127.0.0.1:4000
-```
+Сравнение поведения платформ:
 
----
-
-## 6. GitHub Pages
-
-GitHub → Settings → Pages
-
-Deploy from branch:
-- main
-- /(root)
+| Platform | Status |
+|---|---|
+| Chrome | Planned |
+| Android WebView | Active |
+| Firefox | Planned |
+| Telegram | Active |
+| Android System | Active |
 
 ---
 
-## 7. Сайт
-
-```text
-https://USERNAME.github.io/intent-portal/
-```
-
----
-
-# Структура проекта
+# 📂 REPOSITORY STRUCTURE
 
 ```text
 intent-portal/
-├── _config.yml
-├── .gitignore
-├── LICENSE
+│
 ├── README.md
 ├── index.md
-└── assets/
-    └── style.css
+├── roadmap.md
+│
+├── matrix/
+│   ├── index.md
+│   ├── chrome.md
+│   ├── webview.md
+│   ├── firefox.md
+│   └── telegram.md
+│
+├── lab/
+│   └── intent-lab.html
+│
+├── assets/
+│   └── style.css
+│
+├── data/
+│   └── matrix.json
+│
+└── _config.yml
 ```
 
 ---
 
-# License
+# 📡 STATUS
 
-MIT
+- Platform: GitHub Pages + Jekyll
+- Architecture: Markdown-first
+- State: Active Development
+- Type: Experimental Research System
+
+---
+
+# 🚀 GOAL
+
+Создать систему анализа поведения ссылок
+в различных цифровых средах исполнения.
+
+---
+
+# 🧬 FUTURE DEVELOPMENT
+
+Планируемое развитие:
+
+- Intent Matrix expansion
+- Android WebView APK
+- matrix.json data layer
+- environment behavior mapping
+- execution layer analysis
+
+---
+
+# 🔗 QUICK LINKS
+
+- 👉 [Main Index](index.md)
+- 👉 [Roadmap](roadmap.md)
+
+---
